@@ -13,6 +13,13 @@ export interface ProductState {
     currentProduct: Product,
     products: Product[]
 }
+const initialProduct = {
+    id: 0,
+    productName: '',
+    productCode: '',
+    description: '',
+    starRating: 0
+};
 
 const initialState: ProductState = {
     showProductCode: true,
@@ -43,6 +50,13 @@ export const productReducer = createReducer<ProductState>(
     on(ProductActions.setCurrentProduct, (state, action): ProductState => {
         return { ...state, currentProduct: action.product };
     }),
+    on(ProductActions.clearCurrentProduct, (state): ProductState => {
+        return { ...state, currentProduct: null };
+    }),
+    on(ProductActions.initializeCurrentProduct, (state): ProductState => {
+        return {
+            ...state, currentProduct: initialProduct
+        };
+    })
 
-
-));
+);
