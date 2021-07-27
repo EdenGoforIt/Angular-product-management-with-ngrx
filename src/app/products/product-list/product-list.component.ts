@@ -1,4 +1,4 @@
-import { getShowProductCode } from './../state/product.reducer';
+import { getShowProductCode, getCurrentProduct } from './../state/product.reducer';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
@@ -27,7 +27,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
   constructor(private store: Store<State>, private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.sub = this.productService.selectedProductChanges$.subscribe(
+    //unsubscribe
+    this.store.select(getCurrentProduct).subscribe(
       currentProduct => this.selectedProduct = currentProduct
     );
 
@@ -52,11 +53,11 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   newProduct(): void {
-    this.productService.changeSelectedProduct(this.productService.newProduct());
+    this.store.dispatch(ProductActions.initializeCurrentProduct());
   }
 
   productSelected(product: Product): void {
-    this.productService.changeSelectedProduct(product);
+    this.store.dispatch(ProductActions.setCurrentProduct({ product }));
   }
 
 }
