@@ -1,4 +1,5 @@
-import { Subscription } from 'rxjs';
+import { markUserName } from './state/user.actions';
+import { Observable, Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -7,6 +8,7 @@ import { State } from '../state/app.state';
 
 import { AuthService } from './auth.service';
 import { getMarkUserName } from './state/user.reducer';
+import * as UserActions from './state/user.actions';
 
 @Component({
   templateUrl: './login.component.html',
@@ -15,14 +17,12 @@ import { getMarkUserName } from './state/user.reducer';
 export class LoginComponent implements OnInit {
   pageTitle = 'Log In';
 
-  maskUserName: boolean;
+  maskUserName$: Observable<boolean>;
 
   constructor(private store: Store<State>, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.store.select(getMarkUserName).subscribe(
-      markUserName => this.maskUserName = markUserName
-    );
+    this.maskUserName$ = this.store.select(getMarkUserName);
   }
 
   cancel(): void {
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   checkChanged(): void {
-    this.store.dispatch({ type: "[User] Mark User Name" });
+    this.store.dispatch(UserActions.markUserName());
   }
 
   login(loginForm: NgForm): void {
