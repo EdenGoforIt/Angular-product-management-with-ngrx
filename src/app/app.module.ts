@@ -39,7 +39,7 @@ import { EffectsModule } from '@ngrx/effects';
   declarations: [
     AppComponent,
     ShellComponent,
-    MenuComponent,
+    MenuComponent,  
     WelcomeComponent,
     PageNotFoundComponent
   ],

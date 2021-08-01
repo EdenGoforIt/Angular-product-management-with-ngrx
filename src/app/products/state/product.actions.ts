@@ -16,4 +16,4 @@ export const loadProducts = createAction(ProductContants.LOAD_PRODUCT);
 
 export const loadProductsSuccess = createAction(ProductContants.LOAD_PRODUCT_SUCCESS, props<{ products: Product[] }>());
 
-export const loadProductsFailure = createAction(ProductContants.LOAD_PRODUCT_FAILURE);
+export const loadProductsFailure = createAction(ProductContants.LOAD_PRODUCT_FAILURE, props<{ error: string }>());

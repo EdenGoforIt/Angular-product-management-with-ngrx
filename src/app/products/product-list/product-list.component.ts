@@ -1,9 +1,8 @@
-import { getShowProductCode, getCurrentProduct } from './../state/product.reducer';
+import { getShowProductCode, getCurrentProduct, getProducts, getError } from './../state/product.reducer';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Product } from '../product';
-import { ProductService } from '../product.service';
 import { State } from '../state/product.reducer';
 import * as ProductActions from '../state/product.actions';
 
@@ -14,34 +13,21 @@ import * as ProductActions from '../state/product.actions';
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   pageTitle = 'Products';
-  errorMessage: string;
-
-  displayCode: boolean;
-
+  displayCode$: Observable<boolean>;
+  selectedProduct$: Observable<Product> | null;
   products: Product[];
-
-  // Used to highlight the selected product in the list
-  selectedProduct: Product | null;
+  products$: Observable<Product[]>;
   sub: Subscription;
+  errorMessage$: Observable<string>;
 
-  constructor(private store: Store<State>, private productService: ProductService) { }
+  constructor(private store: Store<State>) { }
 
   ngOnInit(): void {
-    //unsubscribe
-    this.store.select(getCurrentProduct).subscribe(
-      currentProduct => this.selectedProduct = currentProduct
-    );
-
-    this.productService.getProducts().subscribe({
-      next: (products: Product[]) => this.products = products,
-      error: err => this.errorMessage = err
-    });
-    //TODO: unscribe 
-    this.store.select(getShowProductCode).subscribe(
-      showProductCode => {
-        this.displayCode = showProductCode
-      }
-    );
+    this.store.dispatch(ProductActions.loadProducts());
+    this.selectedProduct$ = this.store.select(getCurrentProduct);
+    this.products$ = this.store.select(getProducts);
+    this.displayCode$ = this.store.select(getShowProductCode);
+    this.errorMessage$ = this.store.select(getError);
   }
 
   ngOnDestroy(): void {
