@@ -1,5 +1,4 @@
-import { UserState } from './user.reducer';
-import { createAction, createFeatureSelector, createReducer, createSelector, on } from "@ngrx/store";
+import { createFeatureSelector, createReducer, createSelector, on } from "@ngrx/store";
 import { User } from "../user";
 import * as UserActions from './user.actions';
 
@@ -24,7 +23,7 @@ export const getMarkUserName = createSelector(
 );
 export const getCurrentUser = createSelector(
     getUserFeatureState,
-    state => state.
+    state => state.currentUser
 );
 
 export const userReducer = createReducer(

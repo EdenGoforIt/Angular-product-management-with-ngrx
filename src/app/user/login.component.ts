@@ -1,5 +1,4 @@
-import { markUserName } from './state/user.actions';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
