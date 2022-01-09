@@ -1,4 +1,4 @@
 import * as ProductPageActions from './product-page.actions';
-import * as ProductAPIActions from './product-api.actions';
+import * as ProductApiActions from './product-api.actions';
 
-export { ProductPageActions, ProductAPIActions };
+export { ProductPageActions, ProductApiActions };

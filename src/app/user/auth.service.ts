@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { of, Observable } from 'rxjs';
 
 import { User } from './user';
 
@@ -10,11 +9,13 @@ export class AuthService {
     currentUser: User | null;
     redirectUrl: string;
 
+    constructor() { }
+
     isLoggedIn(): boolean {
         return !!this.currentUser;
     }
 
-    login(userName: string, password: string): Observable<User> {
+    login(userName: string, password: string): void {
         // Code here would log into a back end service
         // and return user information
         // This is just hard-coded here.
@@ -23,11 +24,9 @@ export class AuthService {
             userName,
             isAdmin: false
         };
-        return of(this.currentUser);
     }
 
-    logout(): Observable<void> {
+    logout(): void {
         this.currentUser = null;
-        return of();
     }
 }

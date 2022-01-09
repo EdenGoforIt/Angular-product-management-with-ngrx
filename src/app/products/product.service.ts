@@ -11,11 +11,13 @@ import { Product } from './product';
 })
 export class ProductService {
   private productsUrl = 'api/products';
+
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productsUrl)
       .pipe(
+        tap(data => console.log(JSON.stringify(data))),
         catchError(this.handleError)
       );
   }
@@ -47,9 +49,6 @@ export class ProductService {
     return this.http.put<Product>(url, product, { headers })
       .pipe(
         tap(() => console.log('updateProduct: ' + product.id)),
-        // Update the item in the list
-        // This is required because the selected product that was edited
-        // was a copy of the item from the array. 
         // Return the product on an update
         map(() => product),
         catchError(this.handleError)

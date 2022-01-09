@@ -1,35 +1,39 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  EventEmitter,
+  Output,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
+
 import { Product } from '../product';
-import { ProductService } from '../product.service';
 import { GenericValidator } from '../../shared/generic-validator';
 import { NumberValidators } from '../../shared/number.validator';
-// ngrx import
-import { Store } from '@ngrx/store';
-import { ProductPageActions } from '../state/actions';
-import { tap } from 'rxjs/operators';
-import { getCurrentProduct, State } from '../state'
 
 @Component({
   selector: 'pm-product-edit',
   templateUrl: './product-edit.component.html'
 })
-export class ProductEditComponent implements OnInit, OnDestroy {
+export class ProductEditComponent implements OnInit, OnChanges {
   pageTitle = 'Product Edit';
-  errorMessage = '';
-  productForm: FormGroup;
+  @Input() errorMessage: string;
+  @Input() selectedProduct: Product;
+  @Output() create = new EventEmitter<Product>();
+  @Output() update = new EventEmitter<Product>();
+  @Output() delete = new EventEmitter<Product>();
+  @Output() clearCurrent = new EventEmitter<void>();
 
-  product$: Observable<Product> | null;
-  sub: Subscription;
+  productForm: FormGroup;
 
   // Use with the generic validation message class
   displayMessage: { [key: string]: string } = {};
   private validationMessages: { [key: string]: { [key: string]: string } };
   private genericValidator: GenericValidator;
 
-  constructor(private store: Store<State>, private fb: FormBuilder, private productService: ProductService) {
-
+  constructor(private fb: FormBuilder) {
     // Defines all of the validation messages for the form.
     // These could instead be retrieved from a file or database.
     this.validationMessages = {
@@ -60,18 +64,18 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       description: ''
     });
 
-    this.product$ = this.store.select(getCurrentProduct).pipe(tap(
-      currentProduct => this.displayProduct(currentProduct)
-    ));
-    this.store.select(getCurrentProduct).subscribe(currentProduct => this.displayProduct(currentProduct));
     // Watch for value changes for validation
     this.productForm.valueChanges.subscribe(
       () => this.displayMessage = this.genericValidator.processMessages(this.productForm)
     );
   }
 
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
+  ngOnChanges(changes: SimpleChanges): void {
+    // patch form with value from the store
+    if (changes.selectedProduct) {
+      const product = changes.selectedProduct.currentValue as Product;
+      this.displayProduct(product);
+    }
   }
 
   // Also validate on blur
@@ -81,9 +85,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   }
 
   displayProduct(product: Product | null): void {
-    // Set the local product property
-
-    if (product) {
+    if (product && this.productForm) {
       // Reset the form back to pristine
       this.productForm.reset();
 
@@ -104,41 +106,35 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     }
   }
 
-  cancelEdit(product: Product): void {
+  cancelEdit(): void {
     // Redisplay the currently selected product
     // replacing any edits made
-    this.displayProduct(product);
+    this.displayProduct(this.selectedProduct);
   }
 
-  deleteProduct(product: Product): void {
-    if (product && product.id) {
-      if (confirm(`Really delete the product: ${product.productName}?`)) {
-        this.productService.deleteProduct(product.id).subscribe({
-          next: () => this.store.dispatch(ProductPageActions.clearCurrentProduct()),
-          error: err => this.errorMessage = err
-        });
+  deleteProduct(): void {
+    if (this.selectedProduct && this.selectedProduct.id) {
+      if (confirm(`Really delete the product: ${this.selectedProduct.productName}?`)) {
+        this.delete.emit(this.selectedProduct);
       }
     } else {
       // No need to delete, it was never saved
-      this.store.dispatch(ProductPageActions.clearCurrentProduct());
+      this.clearCurrent.emit();
     }
   }
 
-  saveProduct(originalProduct: Product): void {
+  saveProduct(): void {
     if (this.productForm.valid) {
       if (this.productForm.dirty) {
         // Copy over all of the original product properties
         // Then copy over the values from the form
         // This ensures values not on the form, such as the Id, are retained
-        const product = { ...originalProduct, ...this.productForm.value };
+        const product = { ...this.selectedProduct, ...this.productForm.value };
 
         if (product.id === 0) {
-          this.productService.createProduct(product).subscribe({
-            next: p => this.store.dispatch(ProductPageActions.setCurrentProduct({ currentProductId: p.id })),
-            error: err => this.errorMessage = err
-          });
+          this.create.emit(product);
         } else {
-          this.store.dispatch(ProductPageActions.updateProduct({ product }));
+          this.update.emit(product);
         }
       }
     }

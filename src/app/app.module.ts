@@ -16,6 +16,8 @@ import { PageNotFoundComponent } from './home/page-not-found.component';
 
 /* Feature Modules */
 import { UserModule } from './user/user.module';
+
+/* NgRx */
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
@@ -30,7 +32,7 @@ import { EffectsModule } from '@ngrx/effects';
     AppRoutingModule,
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
-      name: "Eden Dev tools",
+      name: 'APM Demo App DevTools',
       maxAge: 25,
       logOnly: environment.production
     }),
@@ -39,7 +41,7 @@ import { EffectsModule } from '@ngrx/effects';
   declarations: [
     AppComponent,
     ShellComponent,
-    MenuComponent,  
+    MenuComponent,
     WelcomeComponent,
     PageNotFoundComponent
   ],
