@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="card-header">Product Category</div>
+  <div class="card-body" *ngIf="productCategories">
+    <div class="list-group">
+      <button
+        class="list-group-item list-group-item-action"
+        *ngFor="let productCategory of productCategories"
+      >
+        {{ productCategory.name }}
+      </button>
+    </div>
+  </div>
+</div>

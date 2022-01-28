@@ -1,0 +1,4 @@
+.card .card-body {
+  max-height: 35rem;
+  overflow-y: auto;
+}
