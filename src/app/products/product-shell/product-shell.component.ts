@@ -5,12 +5,18 @@ import { Product } from '../product';
 
 /* NgRx */
 import { Store } from '@ngrx/store';
-import { State, getShowProductCode, getCurrentProduct, getProducts, getError } from '../state';
+import {
+  State,
+  getShowProductCode,
+  getCurrentProduct,
+  getProducts,
+  getError,
+} from '../state';
 
 import { ProductPageActions } from '../state/actions';
 
 @Component({
-  templateUrl: './product-shell.component.html'
+  templateUrl: './product-shell.component.html',
 })
 export class ProductShellComponent implements OnInit {
   displayCode$: Observable<boolean>;
@@ -18,10 +24,9 @@ export class ProductShellComponent implements OnInit {
   products$: Observable<Product[]>;
   errorMessage$: Observable<string>;
 
-  constructor(private store: Store<State>) { }
+  constructor(private store: Store<State>) {}
 
   ngOnInit(): void {
-
     // Do NOT subscribe here because it uses an async pipe
     // This gets the initial values until the load is complete.
     this.products$ = this.store.select(getProducts);
@@ -47,11 +52,15 @@ export class ProductShellComponent implements OnInit {
   }
 
   productSelected(product: Product): void {
-    this.store.dispatch(ProductPageActions.setCurrentProduct({ currentProductId: product.id }));
+    this.store.dispatch(
+      ProductPageActions.setCurrentProduct({ currentProductId: product.id })
+    );
   }
 
   deleteProduct(product: Product): void {
-    this.store.dispatch(ProductPageActions.deleteProduct({ productId: product.id }));
+    this.store.dispatch(
+      ProductPageActions.deleteProduct({ productId: product.id })
+    );
   }
 
   clearProduct(): void {

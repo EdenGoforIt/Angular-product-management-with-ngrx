@@ -14,7 +14,7 @@ export class ProductCategoryService {
   getProductCategories(): Observable<ProductCategory[]> {
     return this.http
       .get<ProductCategory[]>(this.productCategoryUrl)
-      .pipe(tap(console.log), catchError(this.handleError));
+      .pipe(catchError(this.handleError));
   }
   private handleError(err: any) {
     // in a real world app, we may send the server to some remote logging infrastructure

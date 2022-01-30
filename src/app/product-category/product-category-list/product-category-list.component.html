@@ -1,5 +1,8 @@
 <div class="card">
   <div class="card-header">Product Category</div>
+  <div class="card-header">
+
+  </div>
   <div class="card-body" *ngIf="productCategories">
     <div class="list-group">
       <button
@@ -8,6 +11,7 @@
       >
         {{ productCategory.name }}
       </button>
+      <p *ngIf="!productCategories">No Product Category Found</p>
     </div>
   </div>
 </div>
