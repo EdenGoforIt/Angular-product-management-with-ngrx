@@ -39,5 +39,11 @@ export const productCategoryReducer = createReducer<ProductCategoryState>(
         error: action.error,
       };
     }
-  )
+  ),
+  on(productCategoryPageActions.toggleCode, (state): ProductCategoryState => {
+    return {
+      ...state,
+      showProductCategoryCode: !state.showProductCategoryCode,
+    };
+  })
 );

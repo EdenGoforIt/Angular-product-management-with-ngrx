@@ -1,11 +1,15 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
   OnInit,
+  Output,
 } from '@angular/core';
 import { ProductCategory } from '../product-category';
-
+import { State } from '../state';
+import { Store } from '@ngrx/store';
+import { productCategoryPageActions } from '../state/actions';
 @Component({
   selector: 'pm-product-category-list',
   styleUrls: ['./product-category-list.component.css'],
@@ -13,9 +17,15 @@ import { ProductCategory } from '../product-category';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCategoryListComponent implements OnInit {
+  constructor(private store: Store<State>) {}
   @Input() displayCode: boolean;
   @Input() productCategories: ProductCategory[];
+  @Input() errorMessage: string;
+  @Output() displayCodeChanged = new EventEmitter<void>();
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  checkChanged(): void {
+    this.displayCodeChanged.emit();
   }
 }

@@ -20,3 +20,7 @@ export const getError = createSelector(
   productCategoryFeatureState,
   (state) => state.error
 );
+export const getDisplayCode = createSelector(
+  productCategoryFeatureState,
+  (state) => state.showProductCategoryCode
+);

@@ -1,7 +1,19 @@
 <div class="card">
   <div class="card-header">Product Category</div>
   <div class="card-header">
-
+    <div class="row">
+      <div class="form-check col-md-7">
+        <label for="displayCode">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            (change)="checkChanged()"
+            [checked]="displayCode"
+          />
+          Display Code
+        </label>
+      </div>
+    </div>
   </div>
   <div class="card-body" *ngIf="productCategories">
     <div class="list-group">
@@ -10,8 +22,12 @@
         *ngFor="let productCategory of productCategories"
       >
         {{ productCategory.name }}
+        <ng-container *ngIf="displayCode"> (code) </ng-container>
       </button>
       <p *ngIf="!productCategories">No Product Category Found</p>
     </div>
   </div>
+</div>
+<div *ngIf="errorMessage" class="alert alert-danger">
+  Error: {{ errorMessage }}
 </div>
