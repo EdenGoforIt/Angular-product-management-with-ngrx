@@ -4,7 +4,9 @@
       [displayCode]="showProductCategoryCode$ | async"
       [productCategories]="productCategories$ | async"
       [errorMessage]="errorMessage$ | async"
+      [selectedProductCategory]="selectedProductCategory$ | async"
       (displayCodeChanged)="checkChanged()"
+      (productCategoryWasSelected)="productCategorySelected($any($event))"
     >
     </pm-product-category-list>
   </div>

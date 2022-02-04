@@ -20,11 +20,15 @@ export class ProductCategoryListComponent implements OnInit {
   constructor(private store: Store<State>) {}
   @Input() displayCode: boolean;
   @Input() productCategories: ProductCategory[];
+  @Input() selectedProductCategory: ProductCategory;
   @Input() errorMessage: string;
   @Output() displayCodeChanged = new EventEmitter<void>();
-
+  @Output() productCategoryWasSelected = new EventEmitter<ProductCategory>();
   ngOnInit(): void {}
-
+  productCategorySelected(productCategory: ProductCategory): void {
+    console.log('productCategory selected: ', productCategory);
+    this.productCategoryWasSelected.emit(productCategory);
+  }
   checkChanged(): void {
     this.displayCodeChanged.emit();
   }

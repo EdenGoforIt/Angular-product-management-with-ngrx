@@ -2,3 +2,9 @@
   max-height: 35rem;
   overflow-y: auto;
 }
+.displayCode {
+  padding-left: 35px;
+}
+.background-red {
+  background-color: red;
+}

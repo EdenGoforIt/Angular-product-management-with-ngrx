@@ -1,11 +1,17 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { Product } from '../product';
 
 @Component({
   selector: 'pm-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductListComponent {
   pageTitle = 'Products';
@@ -29,5 +35,4 @@ export class ProductListComponent {
   productSelected(product: Product): void {
     this.productWasSelected.emit(product);
   }
-
 }

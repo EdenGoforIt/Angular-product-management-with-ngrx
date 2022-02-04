@@ -2,7 +2,7 @@
   <div class="card-header">Product Category</div>
   <div class="card-header">
     <div class="row">
-      <div class="form-check col-md-7">
+      <div class="form-check col-md-7 displayCode">
         <label for="displayCode">
           <input
             type="checkbox"
@@ -20,6 +20,10 @@
       <button
         class="list-group-item list-group-item-action"
         *ngFor="let productCategory of productCategories"
+        [ngClass]="{
+          'background-red': productCategory?.id === selectedProductCategory?.id
+        }"
+        (click)="productCategorySelected(productCategory)"
       >
         {{ productCategory.name }}
         <ng-container *ngIf="displayCode"> (code) </ng-container>
