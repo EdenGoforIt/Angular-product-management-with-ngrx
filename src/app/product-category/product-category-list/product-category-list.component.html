@@ -1,9 +1,16 @@
 <div class="card">
-  <div class="card-header">Product Category</div>
+  <div class="card-header">
+    Product Category
+    <span class="col-md-2 text-right">
+      <button class="btn btn-primary" (click)="newProductCategory()">
+        Add
+      </button>
+    </span>
+  </div>
   <div class="card-header">
     <div class="row">
-      <div class="form-check col-md-7 displayCode">
-        <label for="displayCode">
+      <div class="form-check displayCode row">
+        <label for="displayCode" class="col-md-10">
           <input
             type="checkbox"
             class="form-check-input"

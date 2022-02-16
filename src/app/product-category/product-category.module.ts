@@ -7,17 +7,24 @@ import { StoreModule } from '@ngrx/store';
 import { ProductCategoryShellComponent } from './product-category-shell/product-category-shell.component';
 import { ProductCategoryListComponent } from './product-category-list/product-category-list.component';
 import { CommonModule } from '@angular/common';
+import { ProductCategoryEditComponent } from './product-category-edit/product-category-edit.component';
+import { SharedModule } from '../shared/shared.module';
 const productCategoryRoutes: Routes = [
   { path: '', component: ProductCategoryShellComponent },
 ];
 
 @NgModule({
   imports: [
+    SharedModule,
     RouterModule.forChild(productCategoryRoutes),
     StoreModule.forFeature('productCategories', productCategoryReducer),
     EffectsModule.forFeature([ProductCategoryEffects]),
     CommonModule,
   ],
-  declarations: [ProductCategoryShellComponent, ProductCategoryListComponent],
+  declarations: [
+    ProductCategoryShellComponent,
+    ProductCategoryEditComponent,
+    ProductCategoryListComponent,
+  ],
 })
 export class ProductCategoryModule {}

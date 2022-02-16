@@ -34,6 +34,15 @@ export class ProductCategoryShellComponent implements OnInit {
     this.store.dispatch(productCategoryPageActions.toggleCode());
   }
   productCategorySelected(productCategory: ProductCategory): void {
-    //TODO: set current product category
+    this.store.dispatch(
+      productCategoryPageActions.setCurrentProductCategory({
+        currentProductCategoryId: productCategory.id,
+      })
+    );
+  }
+  initializeNewProductCategory(): void {
+    this.store.dispatch(
+      productCategoryPageActions.initializeCurrentProductCategory()
+    );
   }
 }

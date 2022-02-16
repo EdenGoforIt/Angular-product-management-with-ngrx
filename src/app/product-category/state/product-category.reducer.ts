@@ -45,5 +45,20 @@ export const productCategoryReducer = createReducer<ProductCategoryState>(
       ...state,
       showProductCategoryCode: !state.showProductCategoryCode,
     };
-  })
+  }),
+  on(
+    productCategoryPageActions.setCurrentProductCategory,
+    (state, action): ProductCategoryState => {
+      return {
+        ...state,
+        currentProductCategoryId: action.currentProductCategoryId,
+      };
+    }
+  ),
+  on(
+    productCategoryPageActions.initializeCurrentProductCategory,
+    (state): ProductCategoryState => {
+      return { ...state, currentProductCategoryId: 0 };
+    }
+  )
 );

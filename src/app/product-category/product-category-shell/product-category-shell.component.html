@@ -7,17 +7,22 @@
       [selectedProductCategory]="selectedProductCategory$ | async"
       (displayCodeChanged)="checkChanged()"
       (productCategoryWasSelected)="productCategorySelected($any($event))"
+      (initializeNewProductCategory)="initializeNewProductCategory()"
     >
     </pm-product-category-list>
   </div>
-  <!-- <div class="col-md-8">
-    <pm-product-edit
+  <div class="col-md-8">
+    <pm-product-category-edit
+      [selectedProductCategory]="selectedProductCategory$ | async"
+    >
+    </pm-product-category-edit>
+    <!-- <pm-product-category-edit
       [selectedProduct]="selectedProduct$ | async"
       [errorMessage]="errorMessage$ | async"
       (clearCurrent)="clearProduct()"
       (update)="updateProduct($any($event))"
       (delete)="deleteProduct($any($event))"
       (create)="saveProduct($any($event))"
-    ></pm-product-edit>
-  </div> -->
+    ></pm-product-category-edit> -->
+  </div>
 </div>

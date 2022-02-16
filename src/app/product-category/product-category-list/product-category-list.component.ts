@@ -24,12 +24,15 @@ export class ProductCategoryListComponent implements OnInit {
   @Input() errorMessage: string;
   @Output() displayCodeChanged = new EventEmitter<void>();
   @Output() productCategoryWasSelected = new EventEmitter<ProductCategory>();
+  @Output() initializeNewProductCategory = new EventEmitter<void>();
   ngOnInit(): void {}
   productCategorySelected(productCategory: ProductCategory): void {
-    console.log('productCategory selected: ', productCategory);
     this.productCategoryWasSelected.emit(productCategory);
   }
   checkChanged(): void {
     this.displayCodeChanged.emit();
+  }
+  newProductCategory(): void {
+    this.initializeNewProductCategory.emit();
   }
 }
