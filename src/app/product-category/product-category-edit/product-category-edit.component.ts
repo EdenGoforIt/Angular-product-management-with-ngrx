@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import {
   Component,
   Input,
@@ -10,6 +11,7 @@ import {
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GenericValidator } from 'src/app/shared/generic-validator';
 import { NumberValidators } from 'src/app/shared/number.validator';
+import Swal from 'sweetalert2';
 import { ProductCategory } from '../product-category';
 
 @Component({
@@ -93,8 +95,42 @@ export class ProductCategoryEditComponent implements OnInit, OnChanges {
         ))
     );
   }
-  saveProductCategory(): void {}
-  blur(): void {}
-  cancelEdit(): void {}
-  deleteProductCategory(): void {}
+  saveProductCategory(): void {
+    if (this.productCategoryForm.valid && this.productCategoryForm.dirty) {
+      const productCategory = {
+        ...this.selectedProductCategory,
+        ...this.productCategoryForm.value,
+      };
+
+      if (productCategory.id === 0) {
+        this.create.emit(productCategory);
+      } else {
+        this.update.emit(productCategory);
+      }
+    }
+  }
+  blur(): void {
+    this.displayMessage = this.genericValidator.processMessages(
+      this.productCategoryForm
+    );
+  }
+  cancelEdit(): void {
+    this.displayProductCategory(this.selectedProductCategory);
+  }
+  deleteProductCategory(): void {
+    if (this.selectedProductCategory && this.selectedProductCategory.id) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: `${this.selectedProductCategory.name} will be deleted`,
+        icon: 'warning',
+        showCancelButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.delete.emit(this.selectedProductCategory);
+        } else {
+          this.clearCurrentProductCategory.emit();
+        }
+      });
+    }
+  }
 }

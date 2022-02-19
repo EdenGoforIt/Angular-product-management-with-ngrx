@@ -45,4 +45,25 @@ export class ProductCategoryShellComponent implements OnInit {
       productCategoryPageActions.initializeCurrentProductCategory()
     );
   }
+  createProductCategory(productCategory: ProductCategory): void {
+    this.store.dispatch(
+      productCategoryPageActions.createProductCategory({ productCategory })
+    );
+  }
+  updateProductCategory(productCategory: ProductCategory): void {
+    this.store.dispatch(
+      productCategoryPageActions.updateProductCategory({ productCategory })
+    );
+  }
+
+  deleteProductCategory(productCategory: ProductCategory): void {
+    this.store.dispatch(
+      productCategoryPageActions.deleteProductCategory({ productCategory })
+    );
+  }
+  clearCurrentProductCategory(): void {
+    this.store.dispatch(
+      productCategoryPageActions.clearCurrentProductCategory()
+    );
+  }
 }
