@@ -1,4 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
+import { Action } from 'rxjs/internal/scheduler/Action';
+import { ProductApiActions } from 'src/app/products/state/actions';
 import { ProductCategory } from '../product-category';
 import {
   productCategoryAPIActions,
@@ -59,6 +61,30 @@ export const productCategoryReducer = createReducer<ProductCategoryState>(
     productCategoryPageActions.initializeCurrentProductCategory,
     (state): ProductCategoryState => {
       return { ...state, currentProductCategoryId: 0 };
+    }
+  ),
+  on(
+    productCategoryAPIActions.updateProductCategorySuccess,
+    (state, action): ProductCategoryState => {
+      const updatedProductCategories = state.productCategories.map((pc) =>
+        action.productCategory.id === pc.id ? action.productCategory : pc
+      );
+
+      return {
+        ...state,
+        productCategories: updatedProductCategories,
+        currentProductCategoryId: action.productCategory.id,
+        error: '',
+      };
+    }
+  ),
+  on(
+    productCategoryAPIActions.loadProductCategoriesFailure,
+    (state, action): ProductCategoryState => {
+      return {
+        ...state,
+        error: action.error,
+      };
     }
   )
 );

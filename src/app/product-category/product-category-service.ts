@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ProductCategory } from './product-category';
-import { Observable, throwError } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { Observable, of, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 
 @Injectable({
@@ -15,6 +15,20 @@ export class ProductCategoryService {
     return this.http
       .get<ProductCategory[]>(this.productCategoryUrl)
       .pipe(catchError(this.handleError));
+  }
+
+  updateProductCategory(
+    productCategory: ProductCategory
+  ): Observable<ProductCategory> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const url = `${this.productCategoryUrl}/${productCategory.id}`;
+    return this.http
+      .put<ProductCategory>(url, productCategory, { headers })
+      .pipe(
+        tap(() => console.log('update product category', +productCategory.id)),
+        map(() => productCategory),
+        catchError(this.handleError)
+      );
   }
   private handleError(err: any) {
     // in a real world app, we may send the server to some remote logging infrastructure

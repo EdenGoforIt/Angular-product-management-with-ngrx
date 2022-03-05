@@ -7,6 +7,7 @@ import {
   productCategoryAPIActions,
   productCategoryPageActions,
 } from './actions';
+import { ProductPageActions } from 'src/app/products/state/actions';
 
 @Injectable()
 export class ProductCategoryEffects {
@@ -31,6 +32,30 @@ export class ProductCategoryEffects {
             )
           )
         )
+      )
+    );
+  });
+
+  updateProductCategory$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(productCategoryPageActions.updateProductCategory),
+      concatMap((action) =>
+        this.productCategoryService
+          .updateProductCategory(action.productCategory)
+          .pipe(
+            map((productCategory) =>
+              productCategoryAPIActions.updateProductCategorySuccess({
+                productCategory,
+              })
+            ),
+            catchError((error) =>
+              of(
+                productCategoryAPIActions.updateProductCategoryFailure({
+                  error,
+                })
+              )
+            )
+          )
       )
     );
   });

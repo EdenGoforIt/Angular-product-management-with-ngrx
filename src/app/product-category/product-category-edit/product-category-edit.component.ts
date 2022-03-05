@@ -68,7 +68,7 @@ export class ProductCategoryEditComponent implements OnInit, OnChanges {
         name: productCategory.name,
         code: 'code',
         description: productCategory.description,
-        starRating: Math.floor(Math.random() * 10),
+        starRating: Math.floor(Math.random() * 5),
       });
     }
   }
