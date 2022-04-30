@@ -81,6 +81,7 @@ export class ProductEditComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    // console.log(changes);
     // patch form with value from the store
     if (changes.selectedProduct) {
       const product = changes.selectedProduct.currentValue as Product;
@@ -119,6 +120,7 @@ export class ProductEditComponent implements OnInit, OnChanges {
   }
 
   cancelEdit(): void {
+    console.log('cancel clicked');
     // Redisplay the currently selected product
     // replacing any edits made
     this.displayProduct(this.selectedProduct);
