@@ -5,11 +5,19 @@ import { AuthService } from '../user/auth.service';
 
 @Component({
   selector: 'pm-menu',
-  templateUrl: './menu.component.html'
+  templateUrl: './menu.component.html',
+  styles: [
+    `
+      #logo {
+        width: 100px;
+        height: 70px;
+      }
+    `,
+  ],
 })
 export class MenuComponent implements OnInit {
-  pageTitle = 'Acme Product Management';
-
+  pageTitle = 'Eden Logistics';
+  logoPath: string = 'assets/images/logo.jpg';
   get isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
   }
@@ -21,10 +29,9 @@ export class MenuComponent implements OnInit {
     return '';
   }
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   logOut(): void {
     this.authService.logout();
