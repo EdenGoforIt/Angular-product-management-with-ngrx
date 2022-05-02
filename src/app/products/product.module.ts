@@ -12,6 +12,7 @@ import { StoreModule } from '@ngrx/store';
 import { productReducer } from './state/product.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ProductEffects } from './state/product.effects';
+import { ProductEditButtonsComponent } from './product-edit/product-edit-buttons/product-edit-buttons.component';
 
 const productRoutes: Routes = [
   { path: '', component: ProductShellComponent }
@@ -27,7 +28,8 @@ const productRoutes: Routes = [
   declarations: [
     ProductShellComponent,
     ProductListComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    ProductEditButtonsComponent
   ]
 })
 export class ProductModule { }

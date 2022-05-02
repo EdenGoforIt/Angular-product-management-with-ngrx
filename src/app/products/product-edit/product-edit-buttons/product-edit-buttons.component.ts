@@ -4,7 +4,6 @@ import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'pm-product-edit-buttons',
   templateUrl: './product-edit-buttons.component.html',
-  styleUrls: ['./product-edit-buttons.component.css'],
 })
 export class ProductEditButtonsComponent implements OnInit, OnChanges {
   @Output() cancelClicked = new EventEmitter<void>();
