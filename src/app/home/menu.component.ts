@@ -11,13 +11,14 @@ import { AuthService } from '../user/auth.service';
       #logo {
         width: 100px;
         height: 70px;
+        cursor: pointer;
       }
     `,
   ],
 })
 export class MenuComponent implements OnInit {
   pageTitle = 'Eden Logistics';
-  logoPath: string = 'assets/images/logo.jpg';
+  logoPath: string = 'assets/images/expressLogo.jpg';
   get isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
   }
