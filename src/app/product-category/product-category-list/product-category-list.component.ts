@@ -11,7 +11,7 @@ import { State } from '../state';
 import { Store } from '@ngrx/store';
 import { productCategoryPageActions } from '../state/actions';
 @Component({
-  selector: 'pm-product-category-list',
+  selector: 'eden-product-category-list',
   styleUrls: ['./product-category-list.component.css'],
   templateUrl: './product-category-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

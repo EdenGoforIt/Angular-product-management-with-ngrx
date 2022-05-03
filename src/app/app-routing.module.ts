@@ -4,7 +4,7 @@ import { AuthGuard } from './user/auth-guard.service';
 
 import { ShellComponent } from './home/shell.component';
 import { WelcomeComponent } from './home/welcome.component';
-import { PageNotFoundComponent } from './home/page-not-found.component';
+import { PageNotFoundComponent } from './home/page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   {
@@ -26,6 +26,7 @@ const appRoutes: Routes = [
           ),
       },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+      { path: '**', component: PageNotFoundComponent },
     ],
   },
   { path: '**', component: PageNotFoundComponent },

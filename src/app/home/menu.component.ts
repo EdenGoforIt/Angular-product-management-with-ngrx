@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../user/auth.service';
 
 @Component({
-  selector: 'pm-menu',
+  selector: 'eden-menu',
   templateUrl: './menu.component.html',
   styles: [
     `
@@ -12,6 +12,9 @@ import { AuthService } from '../user/auth.service';
         width: 100px;
         height: 70px;
         cursor: pointer;
+      }
+      .menu {
+        font-weight: 900;
       }
     `,
   ],

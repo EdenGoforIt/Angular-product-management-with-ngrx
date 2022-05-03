@@ -1,0 +1,54 @@
+// Variables
+$color-black: #282a2b;
+$color-white: #ffffff;
+$color-blue: #06038d;
+$color-pink: #c6007e;
+
+// General
+body {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  color: $color-black;
+}
+
+// SVG
+.svg {
+  width: 900px;
+
+  &__character {
+    fill: $color-blue;
+  }
+
+  &__line {
+    fill: none;
+    stroke: $color-pink;
+    stroke-dasharray: 6;
+    stroke-width: 1;
+    stroke-linejoin: round;
+  }
+
+  &__dot {
+    fill: $color-pink;
+  }
+
+  &__plane {
+    transform: translate(-6px, -11px) rotate(25deg);
+    fill: $color-pink;
+    opacity: 0;
+  }
+
+  &__mask {
+    fill: none;
+    stroke: white;
+    stroke-width: 10;
+    stroke-dasharray: 480;
+    stroke-dashoffset: 480;
+  }
+  + #pageTitle {
+    text-align: center;
+  }
+}

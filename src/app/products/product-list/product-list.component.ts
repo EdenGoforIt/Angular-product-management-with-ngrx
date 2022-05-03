@@ -8,7 +8,7 @@ import {
 import { Product } from '../product';
 
 @Component({
-  selector: 'pm-product-list',
+  selector: 'eden-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,

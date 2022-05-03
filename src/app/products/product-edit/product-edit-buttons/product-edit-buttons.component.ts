@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'pm-product-edit-buttons',
+  selector: 'eden-product-edit-buttons',
   templateUrl: './product-edit-buttons.component.html',
 })
 export class ProductEditButtonsComponent implements OnInit, OnChanges {
