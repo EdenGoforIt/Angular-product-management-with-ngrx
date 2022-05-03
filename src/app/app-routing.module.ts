@@ -25,6 +25,13 @@ const appRoutes: Routes = [
             (m) => m.ProductCategoryModule
           ),
       },
+      {
+        path: 'create-product',
+        loadChildren: () =>
+          import('./create-product/create-product.module').then(
+            (m) => m.CreateProductModule
+          ),
+      },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', component: PageNotFoundComponent },
     ],
