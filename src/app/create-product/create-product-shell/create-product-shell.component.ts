@@ -9,4 +9,7 @@ export class CreateProductShellComponent implements OnInit {
   ngOnInit(): void {
 
   }
+  onSubmit() {
+
+  }
 }
