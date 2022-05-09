@@ -26,10 +26,10 @@ const appRoutes: Routes = [
           ),
       },
       {
-        path: 'create-product',
+        path: 'create-order',
         loadChildren: () =>
-          import('./create-product/create-product.module').then(
-            (m) => m.CreateProductModule
+          import('./create-order/create-order.module').then(
+            (m) => m.CreateOrderModule
           ),
       },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },

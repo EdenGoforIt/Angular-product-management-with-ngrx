@@ -1,4 +1,4 @@
-export interface CreateProductDto {
+export interface CreateOrderDto {
   id?: number;
   description: string;
   quantity: number;
