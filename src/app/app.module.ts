@@ -4,15 +4,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 // Imports for loading & configuring the in-memory web api
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { ProductData } from './products/product-data';
-import { ProductCategoryData } from './product-category/product-category-data';
+import { ProductData } from './shared/product-data';
 
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { ShellComponent } from './home/shell.component';
-import { MenuComponent } from './home/menu.component';
-import { WelcomeComponent } from './home/welcome.component';
+import { MenuComponent } from './home/nav/menu.component';
+import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './home/page-not-found/page-not-found.component';
 
 /* Feature Modules */
@@ -23,13 +22,15 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChartsModule } from 'ng2-charts';
+import { MaterialModule } from './shared/material.module';
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(ProductData),
-    UserModule,
     AppRoutingModule,
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
@@ -38,12 +39,15 @@ import { EffectsModule } from '@ngrx/effects';
       logOnly: environment.production,
     }),
     EffectsModule.forRoot([]),
+    BrowserAnimationsModule,
+    ChartsModule,
+    MaterialModule,
   ],
   declarations: [
     AppComponent,
     ShellComponent,
     MenuComponent,
-    WelcomeComponent,
+    DashboardComponent,
     PageNotFoundComponent,
   ],
   bootstrap: [AppComponent],
