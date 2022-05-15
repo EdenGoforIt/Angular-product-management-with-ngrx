@@ -1,5 +1,5 @@
 .card .card-body {
-  max-height: 35rem;
+  max-height: 30rem;
   overflow-y: auto;
 }
 .displayCode {
