@@ -3,15 +3,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './user/auth-guard.service';
 
 import { ShellComponent } from './home/shell.component';
-import { WelcomeComponent } from './home/welcome.component';
+import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './home/page-not-found/page-not-found.component';
+import { LoginComponent } from './user/login.component';
 
 const appRoutes: Routes = [
   {
     path: '',
     component: ShellComponent,
     children: [
-      { path: 'welcome', component: WelcomeComponent },
+      { path: 'dashboard', component: DashboardComponent },
+      {
+        path: 'login',
+        component: LoginComponent,
+      },
       {
         path: 'products',
         // canActivate: [AuthGuard],
@@ -32,7 +37,7 @@ const appRoutes: Routes = [
             (m) => m.CreateOrderModule
           ),
       },
-      { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: '**', component: PageNotFoundComponent },
     ],
   },

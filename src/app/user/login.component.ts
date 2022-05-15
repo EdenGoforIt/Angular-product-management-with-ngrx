@@ -14,21 +14,25 @@ import { UserPageActions } from './state/actions';
 
 @Component({
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   pageTitle = 'Log In';
 
   maskUserName$: Observable<boolean>;
 
-  constructor(private store: Store<State>, private authService: AuthService, private router: Router) { }
+  constructor(
+    private store: Store<State>,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.maskUserName$ = this.store.select(getMaskUserName);
   }
 
   cancel(): void {
-    this.router.navigate(['welcome']);
+    this.router.navigate(['dashboard']);
   }
 
   checkChanged(): void {

@@ -1,0 +1,87 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+    [ngStyle]="{ 'width.em': sidenavWidth }"
+    opened="true"
+    (mouseenter)="increase()"
+    (mouseleave)="decrease()"
+    #sidenav
+  >
+    <mat-toolbar *ngIf="sidenavWidth > 6"> Welcome </mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item [routerLink]="'/' + 'dashboard'" routerLinkActive="active">
+        <mat-icon mat-list-icon>dashboard</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5>Dashboard</h5>
+        </div>
+      </mat-list-item>
+
+      <mat-list-item
+        [routerLink]="'/' + 'create-order'"
+        routerLinkActive="active"
+      >
+        <mat-icon mat-list-icon>create_new_folder</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5>Create Order</h5>
+        </div>
+      </mat-list-item>
+      <mat-list-item [routerLink]="'/' + 'products'" routerLinkActive="active">
+        <mat-icon mat-list-icon>kitchen</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5>Product</h5>
+        </div>
+      </mat-list-item>
+      <mat-list-item
+        [routerLink]="'/' + 'product-categories'"
+        routerLinkActive="active"
+      >
+        <mat-icon mat-list-icon>kitchen</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5>Product Category</h5>
+        </div>
+      </mat-list-item>
+      <mat-list-item
+        [routerLink]="'/' + 'login'"
+        routerLinkActive="active"
+        *ngIf="!isLoggedIn"
+      >
+        <mat-icon mat-list-icon>touch_app</mat-icon>
+        <div fxFlex="10"></div>
+        <a *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5>Login</h5>
+        </a>
+      </mat-list-item>
+      <mat-list-item routerLinkActive="active" *ngIf="isLoggedIn">
+        <mat-icon mat-list-icon>touch_app</mat-icon>
+        <div fxFlex="10"></div>
+        <a *ngIf="sidenavWidth > 6" class="sidenav-item" (click)="logOut()">
+          <h5>Logout</h5>
+        </a>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>{{ pageTitle | titlecase }}</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
