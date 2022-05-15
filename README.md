@@ -1,4 +1,11 @@
-# APM-Demo0
+#Introduction
+Base on experiences at companies providing Logistic services, I am trying to make neat, tidy, user friendly app following the mental mapping
+
+# Order Management
+
+![image](https://user-images.githubusercontent.com/79078528/168452727-965951be-e075-4b54-95c0-9564143ed08d.png)
+
+
 
 Starter files with no NgRx added.
 
