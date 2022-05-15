@@ -3,7 +3,8 @@
   overflow-y: auto;
 }
 .displayCode {
-  padding-left: 35px;
+  padding-left: 25px;
+  padding-top: 10px;
 }
 .background-red {
   background-color: red;

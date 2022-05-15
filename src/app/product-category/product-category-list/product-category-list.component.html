@@ -1,24 +1,21 @@
 <div class="card">
   <div class="card-header">
-    Product Category
-    <span class="col-md-2 text-right">
-      <button class="btn btn-primary" (click)="newProductCategory()">
-        Add
-      </button>
-    </span>
-  </div>
-  <div class="card-header">
     <div class="row">
-      <div class="form-check displayCode row">
-        <label for="displayCode" class="col-md-10">
+      <div class="form-check col-md-7">
+        <label class="displayCode">
           <input
-            type="checkbox"
             class="form-check-input"
+            type="checkbox"
             (change)="checkChanged()"
             [checked]="displayCode"
           />
           Display Code
         </label>
+      </div>
+      <div class="col-md-4 text-right">
+        <button class="btn btn-primary" (click)="newProductCategory()">
+          Add
+        </button>
       </div>
     </div>
   </div>
@@ -38,7 +35,8 @@
       <p *ngIf="!productCategories">No Product Category Found</p>
     </div>
   </div>
-</div>
-<div *ngIf="errorMessage" class="alert alert-danger">
-  Error: {{ errorMessage }}
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    Error: {{ errorMessage }}
+  </div>
 </div>
