@@ -25,6 +25,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
 import { MaterialModule } from './shared/material.module';
+import { CardComponent } from './home/dashboard/card/card.component';
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import { MaterialModule } from './shared/material.module';
     MenuComponent,
     DashboardComponent,
     PageNotFoundComponent,
+    CardComponent,
   ],
   bootstrap: [AppComponent],
 })

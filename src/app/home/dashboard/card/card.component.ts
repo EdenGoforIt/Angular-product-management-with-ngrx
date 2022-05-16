@@ -1,9 +1,16 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
+  selector: 'eden-app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
-export class CardComponent {
+export class CardComponent implements OnInit {
   @Input() title: string;
+
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+
+  constructor() {}
 }
