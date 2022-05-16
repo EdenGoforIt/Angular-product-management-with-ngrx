@@ -25,7 +25,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
 import { MaterialModule } from './shared/material.module';
-import { CardComponent } from './home/dashboard/card/card.component';
+import { DashboardModule } from './home/dashboard/dashboard.module';
 
 @NgModule({
   imports: [
@@ -35,7 +35,7 @@ import { CardComponent } from './home/dashboard/card/card.component';
     AppRoutingModule,
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
-      name: 'APM Demo App DevTools',
+      name: 'Eden App DevTools',
       maxAge: 25,
       logOnly: environment.production,
     }),
@@ -43,14 +43,13 @@ import { CardComponent } from './home/dashboard/card/card.component';
     BrowserAnimationsModule,
     ChartsModule,
     MaterialModule,
+    DashboardModule,
   ],
   declarations: [
     AppComponent,
     ShellComponent,
     MenuComponent,
-    DashboardComponent,
     PageNotFoundComponent,
-    CardComponent,
   ],
   bootstrap: [AppComponent],
 })
