@@ -1,0 +1,12 @@
+.chart-cnt canvas {
+    max-height: 250px;
+    width: auto !important;
+}
+
+.chart-cnt{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
