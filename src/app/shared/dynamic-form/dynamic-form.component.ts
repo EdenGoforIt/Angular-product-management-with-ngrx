@@ -1,7 +1,6 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ControlContainer, NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { EventEmitter } from 'stream';
 import { Field } from './models/field';
 
 @Component({
@@ -18,8 +17,7 @@ export class DynamicFormComponent {
   @Input() disabled = false;
   subs: Subscription[] = [];
 
-  //TODO: event as enum or const
-  trigger(event: string, field: Field<any>) {
+  trigger(event: string, field: Field<any>): void {
     this.event.emit({ action: event, field: field.name });
   }
 }
