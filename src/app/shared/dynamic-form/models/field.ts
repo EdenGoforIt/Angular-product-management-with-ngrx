@@ -5,6 +5,7 @@ export class Field<T> {
   placeholder?: string;
   helpText?: string;
   class?: string;
+  parentClass?: string;
   maxLength?: number;
   disabled?: boolean;
   hidden?: boolean;
@@ -17,6 +18,7 @@ export class Field<T> {
     this.placeholder = data?.placeholder;
     this.helpText = data?.helpText;
     this.class = data?.class;
+    this.parentClass = data?.parentClass;
     this.maxLength = data?.maxLength || 255;
     this.disabled = !!data?.disabled;
     this.hidden = !!data?.hidden;
