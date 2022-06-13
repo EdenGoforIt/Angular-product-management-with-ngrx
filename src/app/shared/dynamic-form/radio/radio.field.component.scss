@@ -1,0 +1,27 @@
+$error-color: #dc3545 !important;
+
+.wrapper.radio {
+  .single-field .row,
+  grouped-fields .field:nth-of-type(odd) .row {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  mat-label {
+    vertical-align: top;
+  }
+  .mat-radio-button {
+    margin-left: 10px;
+    label.mat-radio-label {
+      margin: 0px;
+    }
+  }
+
+  .error {
+    .mat-radio-outer-circle,
+    label.mat-radio-label,
+    mat-label {
+      border-color: $error-color;
+      color: $error-color;
+    }
+  }
+}
