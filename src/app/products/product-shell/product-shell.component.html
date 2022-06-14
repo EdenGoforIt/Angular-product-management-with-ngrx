@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-4">
-    <eden-product-list
+    <app-product-list
       [displayCode]="displayCode$ | async"
       [products]="products$ | async"
       [selectedProduct]="selectedProduct$ | async"
@@ -8,16 +8,16 @@
       (displayCodeChanged)="checkChanged()"
       (initializeNewProduct)="newProduct()"
       (productWasSelected)="productSelected($any($event))"
-    ></eden-product-list>
+    ></app-product-list>
   </div>
   <div class="col-md-8">
-    <eden-product-edit
+    <app-product-edit
       [selectedProduct]="selectedProduct$ | async"
       [errorMessage]="errorMessage$ | async"
       (clearCurrent)="clearProduct()"
       (update)="updateProduct($any($event))"
       (delete)="deleteProduct($any($event))"
       (create)="saveProduct($any($event))"
-    ></eden-product-edit>
+    ></app-product-edit>
   </div>
 </div>

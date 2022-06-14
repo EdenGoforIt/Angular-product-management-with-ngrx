@@ -14,7 +14,7 @@ import { GenericValidator } from '../../shared/generic-validator';
 import { NumberValidators } from '../../shared/number.validator';
 
 @Component({
-  selector: 'eden-product-edit',
+  selector: 'app-product-edit',
   templateUrl: './product-edit.component.html',
 })
 export class ProductEditComponent implements OnInit, OnChanges {

@@ -7,13 +7,13 @@ import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from '../../user/auth.service';
 
 @Component({
-  selector: 'eden-menu',
+  selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
   sidenavWidth = 4;
-  pageTitle = 'Eden Logistics';
+  pageTitle = 'app Logistics';
   logoPath: string = 'assets/images/expressLogo.jpg';
   menuItems: string[] = [
     'dashboard',

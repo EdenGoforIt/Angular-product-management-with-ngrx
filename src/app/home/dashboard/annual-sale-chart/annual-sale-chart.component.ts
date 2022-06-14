@@ -3,7 +3,7 @@ import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { DashboardService } from '../dashboard.service';
 @Component({
-  selector: 'eden-annual-sale-chart',
+  selector: 'app-annual-sale-chart',
   templateUrl: './annual-sale-chart.component.html',
   styleUrls: ['./annual-sale-chart.component.scss'],
 })

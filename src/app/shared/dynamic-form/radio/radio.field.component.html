@@ -1,0 +1,27 @@
+<div
+  class="row no-gutters {{ field.parentClass }}"
+  [ngClass]="{
+    error:
+      (ngForm.valid && ngForm.touched && input.errors.required) ||
+      (ngForm.submitted && input.errors?.required)
+  }"
+>
+  <div class="col pl-0">
+    <mat-label [matTooltip]="field.helpText">{{ field.labelText }}</mat-label>
+  </div>
+  <div class="col text-left {{ field.class }}">
+    <mat-radio-group
+      name="{{ field.name }}"
+      #input="ngModel"
+      [(ngModel)]="val"
+      [appFieldProps]="field"
+      [disabled]="disabled"
+      [required]="required"
+    >
+      <mat-radio-button
+        *ngFor="let option of field.options"
+        [value]="option.key"
+      ></mat-radio-button>
+    </mat-radio-group>
+  </div>
+</div>

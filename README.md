@@ -9,7 +9,7 @@ Base on experiences at companies providing Logistic services, I am trying to mak
 
 or 
 
-```ng test --main src/app/services/dealer.service.spec.ts```
+```ng test --main src/app/products/product-shell/product-shell.component.spec.ts```
 
 # Order Management
 

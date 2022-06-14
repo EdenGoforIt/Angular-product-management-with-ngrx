@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-4">
-    <eden-product-category-list
+    <app-product-category-list
       [displayCode]="showProductCategoryCode$ | async"
       [productCategories]="productCategories$ | async"
       [errorMessage]="errorMessage$ | async"
@@ -9,16 +9,16 @@
       (productCategoryWasSelected)="productCategorySelected($any($event))"
       (initializeNewProductCategory)="initializeNewProductCategory()"
     >
-    </eden-product-category-list>
+    </app-product-category-list>
   </div>
   <div class="col-md-8">
-    <eden-product-category-edit
+    <app-product-category-edit
       [selectedProductCategory]="selectedProductCategory$ | async"
       (clearCurrentProductCategory)="clearCurrentProductCategory()"
       (update)="updateProductCategory($any($event))"
       (create)="createProductCategory($any($event))"
       (delete)="deleteProductCategory($any($event))"
     >
-    </eden-product-category-edit>
+    </app-product-category-edit>
   </div>
 </div>

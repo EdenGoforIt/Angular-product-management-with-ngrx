@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'eden-app-card',
+  selector: 'app-app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })

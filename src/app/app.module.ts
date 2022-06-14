@@ -35,7 +35,7 @@ import { DashboardModule } from './home/dashboard/dashboard.module';
     AppRoutingModule,
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
-      name: 'Eden App DevTools',
+      name: 'app App DevTools',
       maxAge: 25,
       logOnly: environment.production,
     }),

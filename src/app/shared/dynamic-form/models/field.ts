@@ -10,6 +10,10 @@ export class Field<T> {
   disabled?: boolean;
   hidden?: boolean;
   readonly?: boolean;
+  labelText?: string;
+  options?: any[];
+  fieldName?: string;
+  placeholderText?: string;
 
   constructor(data: Partial<Field<any>>) {
     this.fieldValue = data?.fieldValue;
@@ -23,5 +27,9 @@ export class Field<T> {
     this.disabled = !!data?.disabled;
     this.hidden = !!data?.hidden;
     this.readonly = data?.readonly;
+    this.labelText = data?.labelText;
+    this.options = data?.options;
+    this.fieldName = data?.fieldName;
+    this.placeholderText = data?.placeholderText;
   }
 }

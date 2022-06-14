@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 import { ProductCategory } from '../product-category';
 
 @Component({
-  selector: 'eden-product-category-edit',
+  selector: 'app-product-category-edit',
   templateUrl: './product-category-edit.component.html',
 })
 export class ProductCategoryEditComponent implements OnInit, OnChanges {
