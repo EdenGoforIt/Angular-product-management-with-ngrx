@@ -21,6 +21,80 @@ Starter files with no NgRx added.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
 
+## Snippets
+
+Here are some [VSCode](https://code.visualstudio.com) snippets I'm using whilst recording this application, these help speed up boilerplate creation for things such as components, modules and services.
+
+> Here's how to [install the snippets](https://code.visualstudio.com/docs/editor/userdefinedsnippets#_creating-your-own-snippets) in VSCode. Add them to `typescript.json` when prompted for which language the snippets are for.
+
+```json
+{
+  "@Component": {
+    "prefix": "@Component",
+    "description": "Creates a component definition",
+    "body": [
+      "import { Component } from '@angular/core';",
+      "",
+      "@Component({",
+      "\tselector: '${1:selector-name}',",
+      "\tstyleUrls: ['${1:selector-name}.component.scss'],",
+      "\ttemplate: `",
+      "\t\t<div>",
+      "\t\t\t",
+      "\t\t</div>",
+      "\t`",
+      "})",
+      "export class ${3:Name}Component {",
+      "\tconstructor() {}",
+      "}"
+    ]
+  },
+  "@Injectable": {
+    "prefix": "@Injectable",
+    "description": "Creates an @Injectable service",
+    "body": [
+      "import { Injectable } from '@angular/core';",
+      "",
+      "@Injectable()",
+      "export class ${1:Name}Service {",
+      "\tconstructor() {}",
+      "}"
+    ]
+  },
+  "@NgModule": {
+    "prefix": "@NgModule",
+    "description": "Creates an @NgModule",
+    "body": [
+      "import { NgModule } from '@angular/core';",
+      "",
+      "@NgModule({",
+      "\timports: [],",
+      "\tdeclarations: [],",
+      "\tproviders: []",
+      "})",
+      "export class ${1:Name}Module {}"
+    ]
+  },
+  "@Pipe": {
+    "prefix": "@Pipe",
+    "description": "Creates an @Pipe",
+    "body": [
+      "import { Pipe, PipeTransform } from '@angular/core';",
+      "",
+      "@Pipe({",
+      "\tname: '${1:selector-name}'",
+      "})",
+      "export class ${2:Name}Pipe implements PipeTransform {",
+      "\ttransform(value: any) {",
+      "\t\t$0",
+      "\t}",
+      "}"
+    ]
+  }
+}
+```
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
