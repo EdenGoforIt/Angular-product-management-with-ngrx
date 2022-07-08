@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SortPipe } from '../shared/pipes/sort.pipe';
 import { SharedModule } from '../shared/shared.module';
 import { CreateOrderShellComponent } from './create-order-shell/create-order-shell.component';
 
@@ -9,7 +10,7 @@ const createOrderRoute: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(createOrderRoute), SharedModule],
-  declarations: [CreateOrderShellComponent],
+  declarations: [CreateOrderShellComponent, SortPipe],
   exports: [],
 })
 export class CreateOrderModule {}
