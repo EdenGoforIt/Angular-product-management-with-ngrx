@@ -1,0 +1,63 @@
+$field-color: rgba(0, 0, 0, 0.25);
+$field-color-focus: rgba(0, 0, 0, 0.87);
+$field-disabled-color: #8c8c8c;
+
+.wrapper {
+  vertical-align: top;
+  &.center {
+    vertical-align: baseline;
+  }
+
+  // general style
+  mat-form-field {
+    max-width: 100%;
+    &.small {
+      width: 130px;
+    }
+    &:not(.combine-l) {
+      margin-right: 10px;
+    }
+
+    // two fields combined
+    &.combine {
+      &-l:not(:hover) .mat-form-field-outline-end {
+        border-right: 0px !important;
+      }
+      &-l .mat-form-field-outline-end,
+      &-r .mat-form-field-outline-start {
+        border-radius: 0 !important;
+      }
+    }
+
+    // default field state
+    &.ng-valid {
+      .mat-form-field-outline {
+        color: $field-color !important;
+        &-thick {
+          color: $field-color-focus !important;
+        }
+      }
+    }
+
+    // disabled fields
+    &.mat-form-field-disabled {
+      .mat-select-value,
+      .mat-input-element:disabled,
+      label {
+        color: $field-disabled-color !important;
+      }
+      .mat-form-field-outline {
+        color: lightness($field-disabled-color: 30%) !important;
+      }
+    }
+
+    // clear field toggle
+    &:hover .mat-hint {
+      display: inline;
+    }
+    .mat-hint {
+      display: none;
+      cursor: pointer;
+    }
+  }
+}
