@@ -1,1 +1,57 @@
-<h1>dynamic component</h1>
+<div
+  *ngFor="let field of fields | sort: 'priority'; let i = index"
+  [ngClass]="
+    !isValidDependency(field)
+      ? { 'd-none': true, center: field.verticalBaseLine }
+      : {
+          'd-inline-block': isInline(field),
+          'd-block w-100': !field.inline,
+          center: field.verticalBaseline
+        }
+  "
+  class="wrapper {{ field.infoType }}"
+>
+  <!-- grouping fields  -->
+  <div
+    *ngIf="field.groupingKey && !field.previousGroupingProperty"
+    class="grouped-fields card {{ field.groupingKey }}-group"
+    [ngClass]="{ 'mb-2': field.groupingKey }"
+  >
+    <div class="card-header">
+      <h6 *ngIf="field.groupingKey" class="m-0">
+        {{ splitCamelCase(field.groupingKey) }}
+      </h6>
+    </div>
+
+    <div class="card-body">
+      <!-- grouped elements -->
+      <span
+        *ngFor="let item of fields | filter: { groupingKey: field.groupingKey }"
+        class="field"
+      >
+        <ng-container
+          *ngTemplateOutlet="renderField; context: { $implicit: item }"
+        ></ng-container>
+      </span>
+    </div>
+  </div>
+  <!-- single field -->
+  <span *ngIf="!field.groupingKey" class="single-field">
+    <ng-container
+      *ngTemplateOutlet="renderField; context: { $implicit: field }"
+    ></ng-container>
+  </span>
+
+  <ng-template #renderField let-field>
+    <span [ngSwitch]="field.infoType" [hidden]="field.hidden">
+      <app-radio-field
+        *ngSwitchCase="'radio'"
+        [field]="field"
+        [value]="data[field.fieldName]"
+        [required]="isMandatory(field)"
+        [disabled]="isDisabled(field)"
+      >
+      </app-radio-field>
+    </span>
+  </ng-template>
+</div>
