@@ -47,7 +47,7 @@ $field-disabled-color: #8c8c8c;
         color: $field-disabled-color !important;
       }
       .mat-form-field-outline {
-        color: lightness($field-disabled-color: 30%) !important;
+        color: lighten($field-disabled-color, 30%) !important;
       }
     }
 

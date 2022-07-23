@@ -43,6 +43,7 @@
   </span>
 
   <ng-template #renderField let-field>
+    <pre>{{ field | json }}</pre>
     <span [ngSwitch]="field.infoType" [hidden]="field.hidden">
       <app-radio-field
         *ngSwitchCase="'radio'"
