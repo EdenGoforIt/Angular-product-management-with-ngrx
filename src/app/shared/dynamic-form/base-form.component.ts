@@ -10,7 +10,11 @@ export class BaseFormDirective implements OnInit {
   @Input() clear = new EventEmitter();
   @Input() valueChange = new EventEmitter();
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.val === null && this.field.defaultValue !== null) {
+      this.val = this.field.defaultValue;
+    }
+  }
 
   get val() {
     return this.value;
