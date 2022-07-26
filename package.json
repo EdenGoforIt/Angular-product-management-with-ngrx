@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o",
-    "build": "ng build",
+    "start": "ng serve ",
+    "build": "ng build ",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -30,7 +30,7 @@
     "ng2-charts": "^4.0.0",
     "prisma": "^3.8.1",
     "rxjs": "~6.5.4",
-    "sweetalert2": "^11.4.0",
+    "sweetalert2": "^11.4.24",
     "tslib": "~2.4.0"
   },
   "devDependencies": {
