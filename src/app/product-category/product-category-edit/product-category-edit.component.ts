@@ -1,5 +1,4 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import {
+ import {
   Component,
   Input,
   EventEmitter,
@@ -11,9 +10,8 @@ import {
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GenericValidator } from 'src/app/shared/generic-validator';
 import { NumberValidators } from 'src/app/shared/number.validator';
-import Swal from 'sweetalert2';
 import { ProductCategory } from '../product-category';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-product-category-edit',
   templateUrl: './product-category-edit.component.html',
@@ -124,6 +122,7 @@ export class ProductCategoryEditComponent implements OnInit, OnChanges {
         text: `${this.selectedProductCategory.name} will be deleted`,
         icon: 'warning',
         showCancelButton: true,
+        heightAuto: false,
       }).then((result) => {
         if (result.isConfirmed) {
           this.delete.emit(this.selectedProductCategory);
