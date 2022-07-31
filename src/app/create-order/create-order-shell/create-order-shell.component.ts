@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CreateOrderDto } from '../create-order';
 import { CreateOrderForm } from '../create-order.form';
 
 @Component({
@@ -8,6 +9,7 @@ import { CreateOrderForm } from '../create-order.form';
 })
 export class CreateOrderShellComponent implements OnInit {
   form = new CreateOrderForm();
+  data = new CreateOrderDto();
   ngOnInit(): void {}
   onSubmit() {}
 }

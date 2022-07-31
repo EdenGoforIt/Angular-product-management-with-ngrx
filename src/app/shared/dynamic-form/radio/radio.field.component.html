@@ -1,9 +1,9 @@
 <div
-  class="row no-gutters {{ field.parentClass }}"
+  class="row no-gutters {{ field?.parentClass }}"
   [ngClass]="{
     error:
-      (ngForm.valid && ngForm.touched && input.errors.required) ||
-      (ngForm.submitted && input.errors?.required)
+      (ngForm?.valid && ngForm?.touched && input.errors.required) ||
+      (ngForm?.submitted && input.errors?.required)
   }"
 >
   <div class="col pl-0">
@@ -11,7 +11,7 @@
   </div>
   <div class="col text-left {{ field.class }}">
     <mat-radio-group
-      name="{{ field.name }}"
+      name="{{ field.fieldName }}"
       #input="ngModel"
       [(ngModel)]="val"
       [appFieldProps]="field"

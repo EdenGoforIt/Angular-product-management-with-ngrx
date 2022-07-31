@@ -7,15 +7,15 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class DashboardService {
-  private salesUrl = '../../../../api/sales/sales.json';
+  // private salesUrl = '../../../../api/sales/sales.json';
 
   constructor(private http: HttpClient) {}
 
-  getSalesByMonth(): Observable<any[]> {
-    return this.http
-      .get<any[]>(this.salesUrl)
-      .pipe(catchError(this.handleError));
-  }
+  // getSalesByMonth(): Observable<any[]> {
+  //   return this.http
+  //     .get<any[]>(this.salesUrl)
+  //     .pipe(catchError(this.handleError));
+  // }
 
   private handleError(err: any) {
     // in a real world app, we may send the server to some remote logging infrastructure

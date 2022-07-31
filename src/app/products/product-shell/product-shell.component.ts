@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Product } from '../product';
 
 /* NgRx */
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import {
   State,
   getShowProductCode,
@@ -29,18 +29,18 @@ export class ProductShellComponent implements OnInit {
   ngOnInit(): void {
     // Do NOT subscribe here because it uses an async pipe
     // This gets the initial values until the load is complete.
-    this.products$ = this.store.select(getProducts);
+    this.products$ = this.store.pipe(select(getProducts));
 
     // Do NOT subscribe here because it uses an async pipe
-    this.errorMessage$ = this.store.select(getError);
+    this.errorMessage$ = this.store.pipe(select(getError));
 
     this.store.dispatch(ProductPageActions.loadProducts());
 
     // Do NOT subscribe here because it uses an async pipe
-    this.selectedProduct$ = this.store.select(getCurrentProduct);
+    this.selectedProduct$ = this.store.pipe(select(getCurrentProduct));
 
     // Do NOT subscribe here because it uses an async pipe
-    this.displayCode$ = this.store.select(getShowProductCode);
+    this.displayCode$ = this.store.pipe(select(getShowProductCode));
   }
 
   checkChanged(): void {

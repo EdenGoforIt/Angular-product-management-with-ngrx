@@ -23,9 +23,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ChartsModule } from 'ng2-charts';
 import { MaterialModule } from './shared/material.module';
 import { DashboardModule } from './home/dashboard/dashboard.module';
+import { CreateOrderModule } from './create-order/create-order.module';
 
 @NgModule({
   imports: [
@@ -41,7 +41,6 @@ import { DashboardModule } from './home/dashboard/dashboard.module';
     }),
     EffectsModule.forRoot([]),
     BrowserAnimationsModule,
-    ChartsModule,
     MaterialModule,
     DashboardModule,
   ],

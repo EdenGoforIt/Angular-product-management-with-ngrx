@@ -10,13 +10,24 @@ import { RadioFieldComponent } from './radio/radio.field.component';
 
 @NgModule({
   declarations: [
-    RadioFieldComponent,
     FieldPropsDirective,
     DynamicFormComponent,
     SortPipe,
     FilterPipe,
+    RadioFieldComponent,
   ],
-  imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule],
-  exports: [RadioFieldComponent, FieldPropsDirective, DynamicFormComponent],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  exports: [
+    FieldPropsDirective,
+    DynamicFormComponent,
+    RadioFieldComponent,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class DynamicFormModule {}

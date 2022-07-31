@@ -35,6 +35,7 @@
       </span>
     </div>
   </div>
+
   <!-- single field -->
   <span *ngIf="!field.groupingKey" class="single-field">
     <ng-container
@@ -43,14 +44,13 @@
   </span>
 
   <ng-template #renderField let-field>
-    <pre>{{ field | json }}</pre>
     <span [ngSwitch]="field.infoType" [hidden]="field.hidden">
       <app-radio-field
         *ngSwitchCase="'radio'"
         [field]="field"
-        [value]="data[field.fieldName]"
         [required]="isMandatory(field)"
         [disabled]="isDisabled(field)"
+        [(value)]="data[field.fieldName]"
       >
       </app-radio-field>
     </span>

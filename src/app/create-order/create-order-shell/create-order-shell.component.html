@@ -1,6 +1,23 @@
+<div></div>
 <div class="row">
   <div class="col-75">
-    <div class="container">
+    <form
+      name="createOrderForm"
+      class="view"
+      #ngForm="ngForm"
+      (ngSubmit)="ngForm.valid && onSubmit()"
+    >
+      <app-dynamic-form
+        [fields]="form.fields"
+        [data]="data"
+      ></app-dynamic-form>
+    </form>
+    <!-- <app-radio-field
+        *ngSwitchCase="'radio'"
+        [field]="null"
+      >
+      </app-radio-field> -->
+    <!-- <div class="container">
       <form (ngSubmit)="onSubmit()" #createOrderForm="ngForm">
         <div class="row d-block text-center">
           <h1 class="">Create Order</h1>
@@ -101,7 +118,7 @@
         </label>
         <input type="submit" value="Continue to checkout" class="btn" />
       </form>
-    </div>
+    </div> -->
   </div>
 
   <div class="col-25">
