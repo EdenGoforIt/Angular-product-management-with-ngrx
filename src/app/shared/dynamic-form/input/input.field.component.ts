@@ -1,14 +1,14 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { ControlContainer, NgForm } from '@angular/forms';
 import { BaseFormDirective } from '../base-form.component';
 
 @Component({
-  selector: 'app-radio-field',
-  templateUrl: './radio.field.component.html',
-  styleUrls: ['./radio.field.component.scss'],
+  selector: 'app-input-field',
+  templateUrl: './input.field.component.html',
+  styleUrls: ['./input.field.component.scss'],
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
 })
-export class RadioFieldComponent extends BaseFormDirective {
+export class InputFieldComponent extends BaseFormDirective {
   constructor(public ngForm: NgForm) {
     super();
   }

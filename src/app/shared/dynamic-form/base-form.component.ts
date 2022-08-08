@@ -1,14 +1,18 @@
-import { Directive, EventEmitter, Input, OnInit } from '@angular/core';
+import { Directive, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Field } from './models/field';
 
-@Directive()
+@Directive({
+  selector: 'base-form',
+})
 export class BaseFormDirective implements OnInit {
   @Input() field: Field<any>;
   @Input() disabled: boolean;
   @Input() required: boolean;
+  @Input() clear = new EventEmitter<any>();
+  // https://stackoverflow.com/questions/53209462/does-input-give-a-two-way-binding
+  // two way binding with a child component should work with {inputName}Change for output
   @Input() value: any;
-  @Input() clear = new EventEmitter();
-  @Input() valueChange = new EventEmitter();
+  @Output() valueChange = new EventEmitter<any>();
 
   ngOnInit(): void {
     if (this.val === null && this.field.defaultValue !== null) {

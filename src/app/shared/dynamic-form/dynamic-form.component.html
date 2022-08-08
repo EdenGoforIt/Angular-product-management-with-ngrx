@@ -48,11 +48,21 @@
       <app-radio-field
         *ngSwitchCase="'radio'"
         [field]="field"
+        [(value)]="data[field.fieldName]"
         [required]="isMandatory(field)"
         [disabled]="isDisabled(field)"
-        [(value)]="data[field.fieldName]"
+        (valueChange)="trigger('change', field)"
       >
       </app-radio-field>
+      <app-input-field
+        *ngSwitchCase="'input'"
+        [field]="field"
+        [(value)]="data[field.fieldName]"
+        [required]="isMandatory(field)"
+        [disabled]="isDisabled(field)"
+        (valueChange)="trigger('change', field)"
+      >
+      </app-input-field>
     </span>
   </ng-template>
 </div>

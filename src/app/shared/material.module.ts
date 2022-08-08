@@ -38,7 +38,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatFormFieldModule,
     MatInputModule,
     MatTooltipModule,
-    MatRadioModule,
+    MatRadioModule
   ],
 })
 export class MaterialModule {}

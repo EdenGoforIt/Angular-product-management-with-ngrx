@@ -2,7 +2,7 @@
   class="row no-gutters {{ field?.parentClass }}"
   [ngClass]="{
     error:
-      (ngForm?.valid && ngForm?.touched && input.errors.required) ||
+      (ngForm?.valid && ngForm?.touched && input.errors?.required) ||
       (ngForm?.submitted && input.errors?.required)
   }"
 >
@@ -15,8 +15,8 @@
       #input="ngModel"
       [(ngModel)]="val"
       [appFieldProps]="field"
-      [disabled]="disabled"
-      [required]="required"
+      [disabled]="field.disabled"
+      [required]="field.required"
     >
       <mat-radio-button
         *ngFor="let option of field.options"
