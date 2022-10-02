@@ -94,3 +94,8 @@ span.price {
     margin-bottom: 20px;
   }
 }
+#createOrderForm {
+  #submit-button-group {
+    justify-content: flex-end;
+  }
+}

@@ -1,16 +1,20 @@
-<div></div>
 <div class="row">
   <div class="col-75">
     <form
       name="createOrderForm"
-      class="view"
+      id="createOrderForm"
       #ngForm="ngForm"
       (ngSubmit)="ngForm.valid && onSubmit()"
     >
-      <app-dynamic-form
-        [fields]="form.fields"
-        [data]="data"
-      ></app-dynamic-form>
+      <div class="btn-group d-flex" id="submit-button-group">
+        <button type="submit" class="mt-3" mat-raised-button color="primary">
+          SAVE
+        </button>
+        <button type="button" class="d-inline-block mt-3" mat-raised-button>
+          CANCEL
+        </button>
+      </div>
+      <app-dynamic-form [fields]="form.fields" [data]="data"></app-dynamic-form>
     </form>
     <!-- <app-radio-field
         *ngSwitchCase="'radio'"
