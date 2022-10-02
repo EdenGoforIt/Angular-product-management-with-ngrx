@@ -1,7 +1,15 @@
 <div class="row no-gutters {{ field?.parentClass }}">
-  <mat-form-field appearance="outline">
+  <mat-form-field
+    appearance="outline"
+    [ngStyle]="{ width: field.width + 'px' }"
+  >
     <mat-label>{{ field.labelText }}</mat-label>
-    <input type="text" matInput [placeholder]="field.placeholderText" />
+    <input
+      type="text"
+      matInput
+      [placeholder]="field.placeholderText"
+      autocomplete="off"
+    />
     <mat-hint>Clear</mat-hint>
   </mat-form-field>
 </div>

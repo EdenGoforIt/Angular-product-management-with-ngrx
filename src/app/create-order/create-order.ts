@@ -5,6 +5,8 @@ export class CreateOrderDto {
   productId: number;
   productCategoryId: number;
   hasConsignment: boolean;
+  firstName: string;
+  lastName: string;
 
   constructor(data?: Partial<CreateOrderDto>) {
     this.id = data?.id;
@@ -13,5 +15,7 @@ export class CreateOrderDto {
     this.productId = data?.productId;
     this.productCategoryId = data?.productCategoryId;
     this.hasConsignment = data?.hasConsignment ?? false;
+    this.firstName = data?.firstName;
+    this.lastName = data?.lastName;
   }
 }

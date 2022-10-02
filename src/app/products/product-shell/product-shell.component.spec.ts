@@ -17,6 +17,7 @@ describe('ProductShellComponent', () => {
 
   let products$: BehaviorSubject<Product[]>;
   let products: Product[];
+  //https://issuecloser.com/blog/testing-an-ngrx-project#13
   // https://www.simars.io/angular-test-components-unit-shallow-deep/
 
   beforeEach(async () => {

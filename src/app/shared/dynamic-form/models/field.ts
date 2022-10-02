@@ -21,6 +21,7 @@ export class Field<T> {
   infoType: string;
   required: boolean;
   mandatoryAfter: string;
+  width?: number;
 
   constructor(data: Partial<Field<any>>) {
     this.fieldValue = data?.fieldValue;
@@ -45,5 +46,6 @@ export class Field<T> {
     this.infoType = data?.infoType;
     this.mandatoryAfter = data?.mandatoryAfter;
     this.required = data?.required ?? false;
+    this.width= data?.width ?? 200;
   }
 }

@@ -16,7 +16,7 @@ or
 ![image](https://user-images.githubusercontent.com/79078528/168452727-965951be-e075-4b54-95c0-9564143ed08d.png)
 
 
-
+x
 Starter files with no NgRx added.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
