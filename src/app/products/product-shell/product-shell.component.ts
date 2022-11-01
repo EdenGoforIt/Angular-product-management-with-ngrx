@@ -56,7 +56,7 @@ export class ProductShellComponent implements OnInit {
       ProductPageActions.setCurrentProduct({ currentProductId: product.id })
     );
   }
-
+  
   deleteProduct(product: Product): void {
     this.store.dispatch(
       ProductPageActions.deleteProduct({ productId: product.id })
