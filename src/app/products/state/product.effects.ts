@@ -1,3 +1,5 @@
+import { testCountries } from './actions/product-api.actions';
+import { LocalStorageService } from './../../shared/services/local-storage.service';
 import { Injectable } from '@angular/core';
 /* NgRx */
 import { Actions, createEffect, ofType } from '@ngrx/effects';
@@ -10,6 +12,8 @@ import {
   filter,
   map,
   mergeMap,
+  switchMap,
+  tap,
   withLatestFrom,
 } from 'rxjs/operators';
 import { ProductService } from '../product.service';
@@ -21,12 +25,41 @@ export class ProductEffects {
   constructor(
     private actions$: Actions,
     private productService: ProductService,
+    private localStorageService: LocalStorageService,
     private store: Store<State>
   ) {}
+
+  // loadCountries$ = createEffect(() => {
+  //   return this.actions$.pipe(
+  //     ofType(ProductApiActions.testCountries),
+  //     switchMap(() => {
+  //       const countries = this.localStorageService.getByProperty(
+  //         'test',
+  //         'countries'
+  //       );
+  //       return countries ? of({ countries }) : of({ countries: [] });
+  //     }),
+  //     mergeMap(({ countries }) => {
+  //       if (countries.length) {
+  //         ProductApiActions.testCountriesSuccess({ countries });
+  //       }
+  //       of([{ countries: [{ key: 1, value: 'England' }] }]).pipe(
+  //         map((countries) =>
+  //           ProductApiActions.testCountriesSuccess({ countries })
+  //         ),
+  //         catchError((error) =>
+  //           of(ProductApiActions.loadProductsFailure({ error }))
+  //         )
+  //       );
+  //       console.log('data', countries);
+  //     })
+  //   );
+  // });
 
   loadProducts$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ProductPageActions.loadProducts),
+      // When checking with the state
       withLatestFrom(this.store.select(getProducts)),
       filter(([_, products]) => !!products),
       mergeMap(() =>
@@ -87,4 +120,27 @@ export class ProductEffects {
       )
     );
   });
+
+  // /**
+  //  * Example of check if there is a data in the reducer
+  //  */
+  // readonly loadSongsIfNotLoaded$ = createEffect(() => {
+  //   return this.actions$.pipe(
+  //     // when the songs page is opened
+  //     ofType(songsPageActions.opened),
+  //     // then select songs from the store
+  //     concatLatestFrom(() => this.store.select(selectSongs)),
+  //     // and check if the songs are loaded
+  //     filter(([, songs]) => !songs),
+  //     // if not, load songs from the API
+  //     exhaustMap(() => {
+  //       return this.songsService.getSongs().pipe(
+  //         map((songs) => songsApiActions.songsLoadedSuccess({ songs })),
+  //         catchError((error: { message: string }) =>
+  //           of(songsApiActions.songsLoadedFailure({ error }))
+  //         )
+  //       );
+  //     })
+  //   );
+  // });
 }

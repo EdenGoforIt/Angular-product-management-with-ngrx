@@ -1,3 +1,4 @@
+import { ProductApiActions } from 'src/app/products/state/actions';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -41,6 +42,9 @@ export class ProductShellComponent implements OnInit {
 
     // Do NOT subscribe here because it uses an async pipe
     this.displayCode$ = this.store.pipe(select(getShowProductCode));
+
+    // @TODO: this is the test and can be removed
+    this.store.dispatch(ProductApiActions.testCountries());
   }
 
   checkChanged(): void {
@@ -56,7 +60,7 @@ export class ProductShellComponent implements OnInit {
       ProductPageActions.setCurrentProduct({ currentProductId: product.id })
     );
   }
-  
+
   deleteProduct(product: Product): void {
     this.store.dispatch(
       ProductPageActions.deleteProduct({ productId: product.id })

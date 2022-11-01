@@ -42,3 +42,10 @@ export const deleteProductFailure = createAction(
   '[Product API] Delete Product Fail',
   props<{ error: string }>()
 );
+
+export const testCountries = createAction('[Country API] Test Country');
+
+export const testCountriesSuccess = createAction(
+  '[Country API] Test Country Success',
+  props<{ countries: [] }>()
+);

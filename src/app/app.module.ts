@@ -1,3 +1,5 @@
+import { productReducer } from './products/state/product.reducer';
+import { userReducer } from './user/state/user.reducer';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,7 +20,12 @@ import { PageNotFoundComponent } from './home/page-not-found/page-not-found.comp
 import { UserModule } from './user/user.module';
 
 /* NgRx */
-import { StoreModule } from '@ngrx/store';
+import {
+  ActionReducer,
+  ActionReducerMap,
+  MetaReducer,
+  StoreModule,
+} from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
@@ -26,6 +33,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
 import { DashboardModule } from './home/dashboard/dashboard.module';
 import { CreateOrderModule } from './create-order/create-order.module';
+import { State } from './state/app.state';
+import { localStorageSync } from 'ngrx-store-localstorage';
+
+const reducers: ActionReducerMap<State> = {
+  user: userReducer,
+};
+
+export function localStorageSyncReducer(
+  reducer: ActionReducer<any>
+): ActionReducer<any> {
+  return localStorageSync({ keys: ['user'], rehydrate: true })(reducer);
+}
+const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 
 @NgModule({
   imports: [
@@ -33,7 +53,7 @@ import { CreateOrderModule } from './create-order/create-order.module';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(ProductData),
     AppRoutingModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({
       name: 'app App DevTools',
       maxAge: 25,

@@ -9,6 +9,7 @@ export interface ProductState {
   showProductCode: boolean;
   currentProductId: number | null;
   products: Product[];
+  countries: any[];
   error: string;
 }
 
@@ -16,6 +17,7 @@ const initialState: ProductState = {
   showProductCode: true,
   currentProductId: null,
   products: [],
+  countries: [],
   error: '',
 };
 
@@ -107,5 +109,9 @@ export const productReducer = createReducer<ProductState>(
       ...state,
       error: action.error,
     };
+  }),
+  on(ProductApiActions.testCountriesSuccess, (state, action): ProductState => {
+    console.log('got the country in the reducer', action);
+    return { ...state, countries: action.countries };
   })
 );
