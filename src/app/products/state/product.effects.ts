@@ -60,13 +60,13 @@ export class ProductEffects {
     return this.actions$.pipe(
       ofType(ProductPageActions.loadProducts),
       // When checking with the state
-      withLatestFrom(this.store.select(getProducts)),
-      filter(([_, products]) => !!products),
+      // withLatestFrom(this.store.select(getProducts)),
+      // filter(([_, products]) => !!products),
       mergeMap(() =>
         this.productService.getProducts().pipe(
-          map((products) =>
-            ProductApiActions.loadProductsSuccess({ products })
-          ),
+          map((products) => {
+            return ProductApiActions.loadProductsSuccess({ products });
+          }),
           catchError((error) =>
             of(ProductApiActions.loadProductsFailure({ error }))
           )

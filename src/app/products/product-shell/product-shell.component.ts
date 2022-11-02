@@ -8,6 +8,7 @@ import { Product } from '../product';
 import { select, Store } from '@ngrx/store';
 import {
   State,
+  getProductFeatureState,
   getShowProductCode,
   getCurrentProduct,
   getProducts,
@@ -32,6 +33,10 @@ export class ProductShellComponent implements OnInit {
     // This gets the initial values until the load is complete.
     this.products$ = this.store.pipe(select(getProducts));
 
+    this.store.pipe(select(getProducts)).subscribe((data) => {
+      console.log('getProducts in the shell', data);
+    });
+
     // Do NOT subscribe here because it uses an async pipe
     this.errorMessage$ = this.store.pipe(select(getError));
 
@@ -44,7 +49,7 @@ export class ProductShellComponent implements OnInit {
     this.displayCode$ = this.store.pipe(select(getShowProductCode));
 
     // @TODO: this is the test and can be removed
-    this.store.dispatch(ProductApiActions.testCountries());
+    // this.store.dispatch(ProductApiActions.testCountries());
   }
 
   checkChanged(): void {

@@ -2,6 +2,7 @@ import { Product } from '../../product';
 
 /* NgRx */
 import { createAction, props } from '@ngrx/store';
+import { KeyValue } from '@angular/common';
 
 export const loadProductsSuccess = createAction(
   '[Product API] Load Success',
@@ -47,5 +48,5 @@ export const testCountries = createAction('[Country API] Test Country');
 
 export const testCountriesSuccess = createAction(
   '[Country API] Test Country Success',
-  props<{ countries: [] }>()
+  props<{ countries: KeyValue<number | string, string>[] }>()
 );

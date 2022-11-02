@@ -13,23 +13,22 @@ import { productReducer } from './state/product.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ProductEffects } from './state/product.effects';
 import { ProductEditButtonsComponent } from './product-edit/product-edit-buttons/product-edit-buttons.component';
+import { reducers, metaReducers } from './state/product.metaReducer';
 
-const productRoutes: Routes = [
-  { path: '', component: ProductShellComponent }
-];
+const productRoutes: Routes = [{ path: '', component: ProductShellComponent }];
 
 @NgModule({
   imports: [
     SharedModule,
     RouterModule.forChild(productRoutes),
-    StoreModule.forFeature('products', productReducer),
-    EffectsModule.forFeature([ProductEffects])
+    StoreModule.forFeature('products', reducers, { metaReducers }),
+    EffectsModule.forFeature([ProductEffects]),
   ],
   declarations: [
     ProductShellComponent,
     ProductListComponent,
     ProductEditComponent,
-    ProductEditButtonsComponent
-  ]
+    ProductEditButtonsComponent,
+  ],
 })
-export class ProductModule { }
+export class ProductModule {}

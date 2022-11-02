@@ -35,6 +35,21 @@ import { DashboardModule } from './home/dashboard/dashboard.module';
 import { CreateOrderModule } from './create-order/create-order.module';
 import { State } from './state/app.state';
 import { localStorageSync } from 'ngrx-store-localstorage';
+import merge from 'lodash.merge';
+const INIT_ACTION = '@ngrx/store/init';
+const UPDATE_ACTION = '@ngrx/store/update-reducers';
+
+const mergeReducer = (state: any, rehydratedState: any, action: any) => {
+  if (
+    (action.type === INIT_ACTION || action.type === UPDATE_ACTION) &&
+    rehydratedState
+  ) {
+    // console.log('state', state);
+    // console.log('rehydratedState', rehydratedState);
+    state = merge(state, rehydratedState); // <-- this line was changed to not clone
+  }
+  return state;
+};
 
 const reducers: ActionReducerMap<State> = {
   user: userReducer,
@@ -43,7 +58,9 @@ const reducers: ActionReducerMap<State> = {
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>
 ): ActionReducer<any> {
-  return localStorageSync({ keys: ['user'], rehydrate: true })(reducer);
+  return localStorageSync({ keys: ['user'], rehydrate: true, mergeReducer })(
+    reducer
+  );
 }
 const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 

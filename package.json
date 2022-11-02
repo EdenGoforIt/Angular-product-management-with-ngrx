@@ -27,6 +27,7 @@
     "@ngrx/store-devtools": "^14.0.2",
     "bootstrap": "^4.4.1",
     "chart": "^0.1.2",
+    "lodash.merge": "^4.6.2",
     "ng2-charts": "^4.0.0",
     "prisma": "^3.8.1",
     "rxjs": "~6.5.4",
