@@ -33,7 +33,7 @@
     "ng2-charts": "^4.0.0",
     "prisma": "^3.8.1",
     "rxjs": "~6.5.4",
-    "sweetalert2": "^11.4.24",
+    "sweetalert2": "^11.4.8",
     "tslib": "~2.4.0"
   },
   "devDependencies": {
@@ -46,6 +46,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "angular-in-memory-web-api": "^0.14.0",
+    "cypress": "latest",
     "jasmine-core": "~3.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "^6.4.0",
@@ -54,7 +55,6 @@
     "karma-jasmine": "~3.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
     "protractor": "~7.0.0",
-    "ts-node": "~8.3.0",
-    "cypress": "latest"
+    "ts-node": "~8.3.0"
   }
 }

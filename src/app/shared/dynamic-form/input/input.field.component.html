@@ -6,9 +6,10 @@
     <mat-label>{{ field.labelText }}</mat-label>
     <input
       type="text"
-      matInput
+      class="form-control"
+      [(ngModel)]="field.fieldName"
       [placeholder]="field.placeholderText"
-      autocomplete="off"
+      [autocomplete]="'off'"
     />
     <mat-hint>Clear</mat-hint>
   </mat-form-field>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import { ControlContainer, NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Field } from './models/field';
@@ -9,6 +9,7 @@ import { Field } from './models/field';
   styleUrls: ['./dynamic-form.component.scss'],
   // https://timdeschryver.dev/blog/a-practical-guide-to-angular-template-driven-forms#dynamic-nested-forms-example
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
+  encapsulation: ViewEncapsulation.None
 })
 export class DynamicFormComponent {
   @Output() event = new EventEmitter();

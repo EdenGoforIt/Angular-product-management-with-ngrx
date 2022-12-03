@@ -1,4 +1,4 @@
- import {
+import {
   Component,
   Input,
   EventEmitter,
@@ -11,7 +11,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GenericValidator } from 'src/app/shared/generic-validator';
 import { NumberValidators } from 'src/app/shared/number.validator';
 import { ProductCategory } from '../product-category';
-import Swal from 'sweetalert2';
 @Component({
   selector: 'app-product-category-edit',
   templateUrl: './product-category-edit.component.html',
@@ -26,8 +25,8 @@ export class ProductCategoryEditComponent implements OnInit, OnChanges {
   @Output() clearCurrentProductCategory = new EventEmitter<void>();
 
   productCategoryForm: FormGroup;
-  displayMessage: { [key: string]: string } = {};
-  private validationMessage: { [key: string]: { [key: string]: string } };
+  displayMessage: { [key: string]: string; } = {};
+  private validationMessage: { [key: string]: { [key: string]: string; }; };
   private genericValidator: GenericValidator;
   constructor(private fb: FormBuilder) {
     this.validationMessage = {
@@ -88,9 +87,9 @@ export class ProductCategoryEditComponent implements OnInit, OnChanges {
 
     this.productCategoryForm.valueChanges.subscribe(
       () =>
-        (this.displayMessage = this.genericValidator.processMessages(
-          this.productCategoryForm
-        ))
+      (this.displayMessage = this.genericValidator.processMessages(
+        this.productCategoryForm
+      ))
     );
   }
   saveProductCategory(): void {
@@ -117,19 +116,19 @@ export class ProductCategoryEditComponent implements OnInit, OnChanges {
   }
   deleteProductCategory(): void {
     if (this.selectedProductCategory && this.selectedProductCategory.id) {
-      Swal.fire({
-        title: 'Are you sure?',
-        text: `${this.selectedProductCategory.name} will be deleted`,
-        icon: 'warning',
-        showCancelButton: true,
-        heightAuto: false,
-      }).then((result) => {
-        if (result.isConfirmed) {
-          this.delete.emit(this.selectedProductCategory);
-        } else {
-          this.clearCurrentProductCategory.emit();
-        }
-      });
+      // Swal.fire({
+      //   title: 'Are you sure?',
+      //   text: `${this.selectedProductCategory.name} will be deleted`,
+      //   icon: 'warning',
+      //   showCancelButton: true,
+      //   heightAuto: false,
+      // }).then((result) => {
+      //   if (result.isConfirmed) {
+      //     this.delete.emit(this.selectedProductCategory);
+      //   } else {
+      //     this.clearCurrentProductCategory.emit();
+      //   }
+      // });
     }
   }
 }
