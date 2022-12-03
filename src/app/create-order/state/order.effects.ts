@@ -24,7 +24,6 @@ export class OrderEffects {
       ofType(OrderActions.loadOrder),
       mergeMap(() =>
         this.getOrder().pipe(
-          tap(console.log),
           map(order =>
             OrderActions.loadOrderSuccess({
               order,
