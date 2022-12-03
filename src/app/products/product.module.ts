@@ -31,4 +31,4 @@ const productRoutes: Routes = [{ path: '', component: ProductShellComponent }];
     ProductEditButtonsComponent,
   ],
 })
-export class ProductModule {}
+export class ProductModule { }

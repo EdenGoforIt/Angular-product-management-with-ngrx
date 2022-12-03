@@ -8,11 +8,11 @@ import { CreateOrderForm } from '../create-order.form';
   selector: 'app-create-order-shell',
   templateUrl: './create-order-shell.component.html',
   styleUrls: ['./create-order-shell.component.scss'],
-
 })
 export class CreateOrderShellComponent implements OnInit {
   form = new CreateOrderForm();
+
   data = new CreateOrderDto();
-  ngOnInit(): void { }
-  onSubmit() { }
+  ngOnInit(): void {}
+  onSubmit() {}
 }

@@ -2,8 +2,7 @@
   name="createOrderForm"
   id="createOrderForm"
   #ngForm="ngForm"
-  (ngSubmit)="ngForm.valid && onSubmit()"
->
+  (ngSubmit)="ngForm.valid && onSubmit()">
   <div class="row">
     <div class="col-3">
       <div class="btn-group d-flex" id="submit-button-group">
@@ -22,8 +21,7 @@
         class="form-control"
         placeholder="Recipient's username"
         aria-label="Recipient's username"
-        aria-describedby="basic-addon2"
-      />
+        aria-describedby="basic-addon2" />
     </div>
   </div>
 </form>

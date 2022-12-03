@@ -12,7 +12,7 @@ const initialState: OrderState = {
   error: '',
 };
 
-export const productCategoryReducer = createReducer<OrderState>(
+export const orderReducer = createReducer<OrderState>(
   initialState,
   on(
     OrderActions.loadOrderSuccess,
