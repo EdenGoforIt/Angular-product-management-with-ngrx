@@ -3,7 +3,7 @@ import { getOrder } from './../state/index';
 import { Order } from './../order';
 import { State } from './../../state/app.state';
 import { Component, OnInit } from '@angular/core';
-import { select, Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { CreateOrderDto } from '../create-order';
 import { CreateOrderForm } from '../create-order.form';
 import * as OrderActions from '../state/order.actions';
@@ -24,7 +24,7 @@ export class CreateOrderShellComponent implements OnInit {
     this.store
       .pipe(
         select(fromOrder.getOrder),
-        tap(order => {
+        tap((order: Order) => {
           this.data = {
             ...order,
             address: {
@@ -32,7 +32,10 @@ export class CreateOrderShellComponent implements OnInit {
               physicalAddress: { ...order?.address?.physicalAddress },
             },
           };
-          console.log('got order', this.data);
+          // console.log('got order', order);
+          // console.log('got order', this.data);
+          // console.assert(order.id == this.data.id, 'Id same');
+          // console.assert(order.address == this.data.address, 'Address Same');
         })
       )
       .subscribe();

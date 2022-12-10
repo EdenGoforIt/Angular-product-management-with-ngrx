@@ -62,7 +62,7 @@ export const productReducer = createReducer<ProductState>(
     };
   }),
   on(ProductApiActions.updateProductSuccess, (state, action): ProductState => {
-    const updatedProducts = state.products.map((item) =>
+    const updatedProducts = state.products.map(item =>
       action.product.id === item.id ? action.product : item
     );
     return {
@@ -98,7 +98,7 @@ export const productReducer = createReducer<ProductState>(
     return {
       ...state,
       products: state.products.filter(
-        (product) => product.id !== action.productId
+        product => product.id !== action.productId
       ),
       currentProductId: null,
       error: '',
@@ -116,7 +116,4 @@ export const productReducer = createReducer<ProductState>(
   })
 );
 
-
 // https://stackblitz.com/edit/ngrx-localstorage-128-fix-gzslmg?file=src%2Fapp%2Fstore%2Fmetareducers.ts,src%2Fapp%2Ffeature2%2Fstore%2Freducers%2Findex.ts
-
-

@@ -1,9 +1,10 @@
-import { Component } from "@angular/core";
+import { Order } from './../../order';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-physical-address',
-  templateUrl: './physical-address.component.html'
+  templateUrl: './physical-address.component.html',
 })
 export class PhysicalAddressComponent {
-
+  @Input() data: Order;
 }

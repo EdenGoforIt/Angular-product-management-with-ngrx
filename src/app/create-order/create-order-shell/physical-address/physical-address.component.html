@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-3">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="data?.address?.physicalAddress.latitude"
+      placeholder="Latitude"
+      aria-label="Latitude"
+      aria-describedby="basic-addon2" />
+  </div>
+</div>
+
+<pre>{{ data | json }}</pre>

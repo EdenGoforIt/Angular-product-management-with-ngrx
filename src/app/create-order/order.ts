@@ -4,11 +4,11 @@ export interface Order {
   address?: Address;
 }
 
-export class Address {
+export interface Address {
   physicalAddress?: PhysicalAddress;
 }
 
-export class PhysicalAddress {
+export interface PhysicalAddress {
   latitude?: number;
   longitude?: number;
 }

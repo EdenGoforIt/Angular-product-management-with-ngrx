@@ -1,9 +1,11 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { OrderState } from './order.reducers';
-
-const productCategoryFeatureState = createFeatureSelector<OrderState>('order');
+export interface State {
+  order: OrderState;
+}
+const productCategoryFeatureState = createFeatureSelector<State>('order');
 
 export const getOrder = createSelector(
   productCategoryFeatureState,
-  state => state.order
+  state => state.order.order
 );
